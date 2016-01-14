@@ -104,9 +104,10 @@ ZoomingConfig = React.createClass
     zoomLevel = @refs.zoomLevel.getValue()
     zoomLevel = parseFloat(zoomLevel)
     return if @state.zoomLevel == zoomLevel
-    document.getElementById('poi-app-container').style.transformOrigin = '0 0'
-    document.getElementById('poi-app-container').style.WebkitTransform = "scale(#{zoomLevel})"
-    document.getElementById('poi-app-container').style.width = "#{Math.floor(100 / zoomLevel)}%"
+    for elemt in document.getElementsByClassName('zoomable')
+      elemt?.style.transformOrigin = '0 0'
+      elemt?.style.WebkitTransform = "scale(#{window.zoomLevel})"
+      elemt?.style.width = "#{Math.floor(100 / window.zoomLevel)}%"
     poiappHeight = parseInt(document.getElementsByTagName('poi-app')[0].style.height)
     [].forEach.call $$('poi-app div.poi-app-tabpane'), (e) ->
       e.style.height = "#{poiappHeight / zoomLevel - 40}px"

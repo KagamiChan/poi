@@ -14,9 +14,10 @@ __ = window.i18n.others.__.bind(i18n.others)
 __n = window.i18n.others.__n.bind(i18n.others)
 
 # Set zoom level
-document.getElementById('poi-app-container').style.transformOrigin = '0 0'
-document.getElementById('poi-app-container').style.WebkitTransform = "scale(#{window.zoomLevel})"
-document.getElementById('poi-app-container').style.width = "#{Math.floor(100 / window.zoomLevel)}%"
+for elemt in document.getElementsByClassName('zoomable')
+  elemt?.style.transformOrigin = '0 0'
+  elemt?.style.WebkitTransform = "scale(#{window.zoomLevel})"
+  elemt?.style.width = "#{Math.floor(100 / window.zoomLevel)}%"
 
 # Hackable panels
 window.hack = {}
